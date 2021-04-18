@@ -1,0 +1,9 @@
+out/
+.idea/
+simple_webshop_core/target/
+simple_webshop_web/target/
+/.metadata/
+.settings
+.project
+*.iml
+*.classpath
