@@ -1,0 +1,182 @@
+html {
+    height: 100%;
+}
+
+body {
+    background-color: #FFFFFF;
+    color: #333333;
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 10pt;
+    height: 100%;
+}
+
+.overall {
+    display: block;
+    position: absolute;
+    height: auto;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+div.menu {
+    position: fixed;
+    display: block;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    padding: 5px;
+    width: 185px;
+    border: none;
+    border-right: 1px #ccc solid;
+}
+
+div.content {
+    margin-left: 205px;
+    padding: 5px;
+}
+
+form {
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3 {
+    margin-top: 0;
+}
+
+h1 {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 1.1em;
+}
+
+h3 {
+    font-size: 1em;
+}
+
+a:hover {
+    color: #3366CC;
+}
+
+a img, table, a, img {
+    border: none;
+}
+
+label {
+    margin-right: 1em;
+}
+
+.right {
+    text-align: right;
+}
+
+.center {
+    text-align: center;
+}
+
+.left {
+    text-align: left;
+}
+
+.ui-message-icon-only {
+    display: inline-block;
+    height: 17px;
+    background: none;
+    vertical-align: top;
+    border: none;
+    margin: 0;
+}
+
+td.smallCol {
+    width: 1px;
+    white-space: nowrap;
+}
+
+td.smallCol a {
+    text-decoration: none;
+}
+
+.contentPanel {
+    padding: 0 5px;
+}
+
+/* index-dashboard */
+.dashboard {
+    width: 100%;
+}
+
+.dashboard .ui-dashboard-column {
+    width: 50%;
+}
+
+.dashboard-panel {
+    height: 310px;
+    margin: 5px;
+}
+
+.table-icon {
+    display: inline;
+    vertical-align: baseline;
+    margin-top: 0;
+    padding: 0 8px;
+}
+
+.versionInfo {
+    font-size: 60%;
+    bottom: 10px;
+    position: absolute
+}
+
+.versionInfo ul {
+    padding: 1em 1em;
+    margin: 0;
+}
+
+.topMenu {
+    border-bottom: 1px solid darkgray;
+    margin-bottom: 0.5em;
+    padding-bottom: 0.5em;
+    text-align: right;
+    vertical-align: middle;
+}
+
+/*Green Button*/
+.ui-button.ui-state-default.button-green {
+    background-color: #1f9e53;
+    border-color: #107533;
+}
+
+.ui-button.ui-state-default.button-green.ui-state-hover {
+    background-color: #2eb971;
+}
+
+.ui-button.ui-state-default.button-green.ui-state-active {
+    background-color: #178544;
+}
+
+
+.active-ui,
+.active-ui .ui-state-default,
+.active-ui .ui-widget-header {
+    text-shadow: none !important;
+}
+
+.fullwidth-input input,
+.fullwidth-input textarea,
+.fullwidth-input .ui-selectonemenu {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.mitarbeiter-search td {
+    width: 12.5%;
+    padding: 0 0.3em;
+}

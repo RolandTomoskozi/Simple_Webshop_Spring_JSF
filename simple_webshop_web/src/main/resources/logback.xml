@@ -1,0 +1,24 @@
+<configuration>
+	<contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator"/>
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+	<!-- Spring/Hibernate/etc. Klassen: Info Level -->
+    <logger name="org.springframework" level="INFO"/>
+    <logger name="org.hibernate" level="INFO"/>
+	<logger name="com.sun" level="INFO"/>
+	<logger name="javax" level="INFO"/>
+	<logger name="org.apache" level="INFO"/>
+
+	<!-- Suppress ClientAbortException from ResourceHandlerImpl -->
+	<logger name="com.sun.faces.application.resource.ResourceHandlerImpl" level="ERROR"/>
+	<logger name="javax.enterprise.resource.webcontainer.jsf.application" level="ERROR"/>
+
+    <root level="debug">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>

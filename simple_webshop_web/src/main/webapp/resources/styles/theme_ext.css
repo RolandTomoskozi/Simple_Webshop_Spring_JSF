@@ -1,0 +1,121 @@
+/** ui-styles */
+.ui-widget {
+    font-size: 105%;
+}
+
+/** start: corners */
+.ui-corner-all {
+	border-radius: 4px;
+}
+
+.ui-corner-br {
+	border-bottom-right-radius: 4px;;
+}
+
+.ui-corner-bl {
+	border-bottom-left-radius: 4px;;
+}
+/** end: corners */
+.ui-inputfield {
+	padding: 2px;
+}
+
+.ui-panel .ui-panel-content {
+	padding: 0.4em 0.4em;
+}
+
+.ui-panel .ui-panel-titlebar {
+    padding: 0.3em 0.7em;
+}
+
+.ui-panel .ui-panel-titlebar-icon,.ui-panel .ui-panel-titlebar-icon:hover,.ui-panel .ui-panel-titlebar-icon:focus
+	{
+	margin-left: 0;;
+	margin-top: 0;;
+}
+
+/** start: datatable */
+.ui-datatable .ui-datatable-data td,.ui-datatable .ui-datatable-data-empty td,.ui-datatable th,.ui-datatable tfoot td
+	{
+	padding: 4px 6px;
+}
+/** end: datatable */
+
+/** start: paginator */
+.ui-paginator-page,.ui-paginator-pages,.ui-paginator-next,.ui-paginator-last,.ui-paginator-first,.ui-paginator-previous,.ui-paginator-current,.ui-paginator-prev
+	{
+	padding: 1px 5px;
+	font-weight: normal;
+	line-height: 14px;
+}
+
+.ui-paginator-next,.ui-paginator-last,.ui-paginator-first,.ui-paginator-previous,.ui-paginator-prev
+	{
+	margin-top: 1px;
+}
+
+.ui-paginator-next .ui-icon,.ui-paginator-previous .ui-icon,.ui-paginator-first .ui-icon,.ui-paginator-last .ui-icon,.ui-paginator-prev .ui-icon
+	{
+	height: 16px;
+}
+
+.ui-paginator-page,.ui-paginator-pages,.ui-paginator-next,.ui-paginator-last,.ui-paginator-first,.ui-paginator-previous,.ui-paginator-current,.ui-paginator-prev
+	{
+	height: 16px;
+}
+/** end: paginator */
+.ui-button-text-only .ui-button-text {
+	padding: 0.1em 0.5em;
+}
+
+.ui-state-default,.ui-widget-content .ui-state-default,.ui-widget-header .ui-state-default
+	{
+	font-weight: normal;
+}
+
+.ui-inputfield {
+	box-shadow: none;
+	border-radius: 2px;
+}
+
+.ui-inputfield.ui-state-focus {
+	box-shadow: none;
+}
+
+.ui-separator.ui-state-default {
+	border-left:none;
+	border-right:none;
+	border-bottom:none;
+	border-top-width: 1px;
+	border-top-style: solid;
+}
+
+.ui-datatable .ui-sortable-column-icon {
+    display: inline;
+    padding-right: 16px;
+}
+
+.ui-datatable table, .ui-treetable table {
+	table-layout: auto;
+}
+
+/* no-border-radius */
+.active-ui .ui-corner-all,
+.active-ui .ui-corner-top,
+.active-ui .ui-corner-left,
+.active-ui .ui-corner-right,
+.active-ui .ui-corner-bottom,
+.active-ui .ui-corner-tl,
+.active-ui .ui-corner-tr,
+.active-ui .ui-corner-bl,
+.active-ui .ui-corner-br {
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    -khtml-border-radius: 0;
+    border-radius: 0;
+}
+
+.active-ui .ui-dialog .ui-dialog-titlebar {
+    margin: 0.5em;
+    padding: 0.3em;
+}

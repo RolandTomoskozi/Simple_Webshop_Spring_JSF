@@ -1,7 +1,7 @@
 package at.rt.simple.webshop.core.service.api;
 
 import at.rt.simple.webshop.core.model.domain.Bestellung;
-import at.rt.simple.webshop.core.model.dto.BestellungInfoDto;
+import at.rt.simple.webshop.core.model.dto.BestellungDto;
 
 import java.util.List;
 
@@ -12,12 +12,21 @@ import java.util.List;
  * Created on 18.04.2021
  */
 public interface IBestellungService {
+
     /**
-     * Liefert die Liste aller Bestellungen, sortiert nach der Bezeichnung.
+     * Liefert die List alle Bestellungen.
      *
-     * @return Liste von Bestellungen
+     * @return Liste alle Bestellungen
      */
-    List<Bestellung> listBestellung();
+    List<Bestellung> listAlleBestellungen();
+
+    /**
+     * Liefert die Liste alle Bestellungen mit anzahl der Produkten.
+     *
+     * @param id Kunde id
+     * @return Lust alle Bestellungen
+     */
+    List<BestellungDto> listBestellungDto(Long id);
 
     /**
      * Sucht eine Abteilung anhand der ID
@@ -41,10 +50,4 @@ public interface IBestellungService {
      * @param bestellung zu loeschender Bestellung
      */
     void deleteBestellung(Bestellung bestellung);
-
-    /**
-     * Liefert die Anzahl der Produkten je Bestellung
-     * @return DTO mitBestellungsInfos
-     */
-    List<BestellungInfoDto> getBestellungInfo();
 }

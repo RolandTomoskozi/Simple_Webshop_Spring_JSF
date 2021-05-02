@@ -1,0 +1,18 @@
+package at.rt.simple.webshop.core.model.dto;
+
+import at.rt.simple.webshop.core.model.domain.Kunde;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+/**
+ * DTO kapselt die Bestellung und die Anzahl deren Produkten.
+ *
+ * @author Roland Tömösközi (roland.toemoeskoezi@outlook.com)
+ * Created on 02.05.2021
+ */
+@Data
+@AllArgsConstructor
+public class KundeDto {
+    private Kunde kunde;
+    private Long anzahlVonBestellung;
+}

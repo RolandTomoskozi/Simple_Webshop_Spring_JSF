@@ -18,7 +18,6 @@ import javax.validation.constraints.NotNull;
 @Table(name = "produkt")
 @Data
 public class Produkt extends BaseEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -28,7 +27,10 @@ public class Produkt extends BaseEntity {
     private Bestellung bestellung;
 
     @NotNull
-    private int bestellnummer;
+    private String bestellnummer;
+
+    @NotBlank
+    private String artikelnummer;
 
     private int position;
 

@@ -2,7 +2,7 @@ package at.rt.simple.webshop.core.service.impl;
 
 import at.rt.simple.webshop.core.model.domain.Bestellung;
 import at.rt.simple.webshop.core.model.domain.Produkt;
-import at.rt.simple.webshop.core.model.dto.BestellungInfoDto;
+import at.rt.simple.webshop.core.model.dto.BestellungDto;
 import at.rt.simple.webshop.core.service.api.IBestellungService;
 import org.springframework.stereotype.Service;
 
@@ -24,9 +24,20 @@ public class BestellungService implements IBestellungService {
     private EntityManager entityManager;
 
     @Override
-    public List<Bestellung> listBestellung() {
-        String select = "select b from Bestellung b order by b.datum";
+    public List<Bestellung> listAlleBestellungen() {
+        String select = "select b from Bestellung b";
         TypedQuery<Bestellung> query = entityManager.createQuery(select, Bestellung.class);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<BestellungDto> listBestellungDto(Long id) {
+        String select = "select new at.rt.simple.webshop.core.model.dto.BestellungDto(b, count(p)) " +
+                "from Bestellung b left join Produkt p on p.bestellung=b where b.kunde.id =:id group by b";
+
+        TypedQuery<BestellungDto> query = entityManager.createQuery(select, BestellungDto.class);
+        query.setParameter("id", id);
+
         return query.getResultList();
     }
 
@@ -43,6 +54,7 @@ public class BestellungService implements IBestellungService {
         } else {
             bestellung = entityManager.merge(bestellung);
         }
+
         return bestellung;
     }
 
@@ -50,25 +62,21 @@ public class BestellungService implements IBestellungService {
     @Transactional
     public void deleteBestellung(Bestellung bestellung) {
         Bestellung bestellungToDelete = bestellung;
+
         if (!entityManager.contains(bestellungToDelete)) {
             bestellungToDelete = entityManager.find(Bestellung.class, bestellung.getId());
         }
 
         String select = "select p from Produkt p where p.bestellnummer =: bestellnummer";
+
         TypedQuery<Produkt> query = entityManager.createQuery(select, Produkt.class);
         query.setParameter("bestellnummer", bestellung.getBestellnummer());
+
         List<Produkt> resultList = query.getResultList();
 
-        for (Produkt produkt :resultList) {
+        for (Produkt produkt : resultList) {
             entityManager.remove(produkt);
         }
         entityManager.remove(bestellungToDelete);
-    }
-
-    @Override
-    public List<BestellungInfoDto> getBestellungInfo() {
-        String select = "select new at.rt.simple.webshop.core.model.dto.BestellungInfoDto(b, count(p)) " +
-                "from Bestellung b, Produkt p where p.bestellung=b group by b order by b.bezeichnung";
-        return entityManager.createQuery(select, BestellungInfoDto.class).getResultList();
     }
 }

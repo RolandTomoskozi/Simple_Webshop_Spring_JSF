@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Spring Web Sample App</title>
+    <ui:insert name="metadata"/>
+    <ui:insert name="head"/>
+</h:head>
+<h:body styleClass="active-ui">
+    <div class="overall">
+        <div class="menu ui-widget-content">
+            <!-- Logo + Text -->
+            <h:graphicImage alt="ActiveSolution Logo" value="#{resource['images/logo.png']}"
+                            style="background-color: white"/>
+
+            <h3 class="center">Spring Web Sample</h3>
+            <hr/>
+
+            <p:menu id="menu" style="width: 100%;box-sizing: border-box">
+                <p:menuitem value="Start" outcome="/index.xhtml"/>
+                <p:menuitem value="Kunden" outcome="/kunde/kunde.xhtml"/>
+                <p:menuitem value="Bestellungen" outcome="/bestellung/kunden/bestellung-kunde.xhtml"/>
+            </p:menu>
+
+            <!-- VersionsInfo ausgeben -->
+            <div class="versionInfo">
+
+                <strong>
+                    <h:outputText value="Running on:"/>
+                </strong>
+                <ul>
+                    <ui:repeat value="#{appGlobalBean.versionInfo}" var="v">
+                        <li>
+                            <h:outputText value="#{v}"/>
+                        </li>
+                    </ui:repeat>
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            <div class="topMenu">
+                <h:form id="topForm">
+                    <p:outputLabel for="themeSwitcher" style="line-height: 1.6em;vertical-align: middle"
+                                   value="Theme"/>
+                    <p:themeSwitcher id="themeSwitcher" value="#{userBean.theme}">
+                        <f:selectItem itemLabel="Choose Theme" itemValue="#{null}"/>
+                        <f:selectItems value="#{themeSwitcherBean.themes}" var="theme"
+                                       itemLabel="#{themeSwitcherBean.formatThemeName(theme)}"
+                                       itemValue="#{theme}"/>
+                        <p:ajax process="@this" update="@none"/>
+                    </p:themeSwitcher>
+                </h:form>
+            </div>
+            <h:form id="contentForm">
+
+                <p:growl>
+                    <p:autoUpdate/>
+                </p:growl>
+
+                <h1>
+                    <ui:insert name="title"/>
+                </h1>
+
+                <div class="contentPanel">
+                    <ui:insert name="content"/>
+                </div>
+            </h:form>
+
+            <ui:insert name="nonFormContent"/>
+            <ui:include src="confirmTemplate.xhtml"/>
+        </div>
+    </div>
+</h:body>
+
+<h:outputScript library="js" name="util.js"/>
+<h:outputStylesheet library="styles" name="default.css"/>
+<h:outputStylesheet library="styles" name="theme_ext.css"/>
+
+</html>

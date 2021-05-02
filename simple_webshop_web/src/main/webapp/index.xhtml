@@ -1,0 +1,87 @@
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"-->
+<!--        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml"-->
+<!--      xmlns:f="http://xmlns.jcp.org/jsf/core"-->
+<!--      xmlns:p="http://primefaces.org/ui" xmlns:ui="http://java.sun.com/jsf/facelets"-->
+<!--      xmlns:h="http://java.sun.com/jsf/html"-->
+<!--&gt;-->
+<!--    <ui:composition-->
+<!--            template="/resources/templates/layout/simpleTemplate.xhtml">-->
+<!--        <ui:define name="title">Willkommen!</ui:define>-->
+<!--        <ui:define name="content">-->
+<!--            <p:dashboard styleClass="dashboard" model="#{dashboardBean.model}">-->
+<!--                <p:panel id="mitarbeiter" styleClass="dashboard-panel" header="Neue Mitarbeiter">-->
+<!--                    <ui:repeat value="#{dashboardBean.neueMitarbeiter}" var="row">-->
+<!--                        <h:outputText value="#{row.eintrittsdatum}">-->
+<!--                            <f:convertDateTime type="date"/>-->
+<!--                        </h:outputText>-->
+<!--                        <h:outputText value=": #{row.nachname}, #{row.vorname} (#{row.abteilung.bezeichnung})"/><br/>-->
+<!--                    </ui:repeat>-->
+
+<!--                </p:panel>-->
+
+<!--                <p:panel id="abteilungen" styleClass="dashboard-panel" header="Abteilungen">-->
+<!--                    <p:pieChart type="pie" model="#{dashboardBean.abteilungChartModel}" style="width:100%;height: 280px"/>-->
+<!--                </p:panel>-->
+
+<!--                <p:panel id="links" styleClass="dashboard-panel" header="Links">-->
+<!--                    Verwendete Technolgien und Links:-->
+
+<!--                    <ul>-->
+<!--                        <li><h:outputLink value="http://www.oracle.com/technetwork/java/index.html"-->
+<!--                                          target="_blank">Java</h:outputLink></li>-->
+<!--                        <li><h:outputLink value="https://javaee.github.io/javaserverfaces-spec/"-->
+<!--                                          target="_blank">JSF</h:outputLink>-->
+<!--                            <ul>-->
+<!--                                <li><h:outputLink-->
+<!--                                        value="http://jsfatwork.irian.at/semistatic/introduction.html"-->
+<!--                                        target="_blank">Deutsches Online Buch zu JSF 2 (von Irian)</h:outputLink></li>-->
+<!--                            </ul>-->
+<!--                        </li>-->
+<!--                        <li><h:outputLink value="http://primefaces.org" target="_blank">PrimeFaces</h:outputLink>-->
+<!--                            <ul>-->
+<!--                                <li><h:outputLink value="http://www.primefaces.org/showcase/"-->
+<!--                                                  target="_blank">ShowCase</h:outputLink></li>-->
+<!--                                <li><h:outputLink-->
+<!--                                        value="http://www.primefaces.org/documentation.html"-->
+<!--                                        target="_blank">Documentation</h:outputLink></li>-->
+<!--                                <li><h:outputLink value="http://blog.primefaces.org"-->
+<!--                                                  target="_blank">Blog</h:outputLink></li>-->
+<!--                                <li><h:outputLink value="http://forum.primefaces.org"-->
+<!--                                                  target="_blank">Public Forum</h:outputLink></li>-->
+<!--                            </ul>-->
+<!--                        </li>-->
+
+<!--                        <li><h:outputLink-->
+<!--                                value="https://spring.io/docs"-->
+<!--                                target="_blank">Spring Documentation</h:outputLink></li>-->
+<!--                        <li><h:outputLink value="http://hibernate.org/orm/documentation/"-->
+<!--                                          target="_blank">Hibernate Documentation</h:outputLink></li>-->
+<!--                        <li><h:outputLink value="http://blog.springsource.com/"-->
+<!--                                          target="_blank">SpringSource Blog</h:outputLink></li>-->
+<!--                    </ul>-->
+
+<!--                </p:panel>-->
+
+<!--                <p:panel id="infos" styleClass="dashboard-panel" header="Informationen">-->
+<!--                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut-->
+<!--                    labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo-->
+<!--                    dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor-->
+<!--                    sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor-->
+<!--                    invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.-->
+<!--                    At vero eos et accusam et justo duo dolores et ea rebum.-->
+<!--                    <br/><br/>-->
+<!--                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut-->
+<!--                    labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo-->
+<!--                    dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor-->
+<!--                    sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor-->
+<!--                    invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.-->
+<!--                    At vero eos et accusam et justo duo dolores et ea rebum.-->
+<!--                </p:panel>-->
+
+<!--            </p:dashboard>-->
+
+<!--        </ui:define>-->
+<!--    </ui:composition>-->
+
+<!--</html>-->

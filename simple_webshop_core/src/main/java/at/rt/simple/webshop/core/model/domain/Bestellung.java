@@ -24,9 +24,12 @@ public class Bestellung extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @JoinColumn(name = "kunde_id")
+    @ManyToOne
+    private Kunde kunde;
+
     @NotNull
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int bestellnummer;
+    private String bestellnummer;
 
     @Temporal(TemporalType.DATE)
     private Date datum;

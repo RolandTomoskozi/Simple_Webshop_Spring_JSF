@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition
+        template="/resources/templates/layout/simpleTemplate.xhtml">
+    <ui:define name="title">Kunde</ui:define>
+    <ui:define name="content">
+        <p:dataTable value="#{bestellungBean.kundenList}" var="row" id="dataTable" rows="20" paginator="true"
+                     paginatorPosition="bottom">
+
+            <p:column id="actionColumn" styleClass="smallCol">
+                <p:commandLink id="kundeEditCmd"
+                               action="#{bestellungBean.actionEditKunde(row.kunde)}"
+                               oncomplete="PF('kundeEditDialog').show()" update=":kundeEditForm"
+                               title="Kunde bearbeiten">
+                    <span class="fa fa-fw fa-edit"/>
+                </p:commandLink>
+                <p:commandLink id="kundeDeleteCmd"
+                               action="#{bestellungBean.actionDeleteKunde(row.kunde)}"
+                               update="@form"
+                               title="Kunde löschen">
+                    <p:confirm header="Bestätigung"
+                               message="Wollen Sie die Kunde wirklich löschen?"
+                               icon="pi pi-info-circle"/>
+                    <span class="fa fa-fw fa-trash"/>
+                </p:commandLink>
+            </p:column>
+
+            <p:column id="nameColumn" headerText="Name" sortBy="#{row.kunde.name}">
+                <h:outputText value="#{row.kunde.name}"/>
+            </p:column>
+
+        </p:dataTable>
+        <br/>
+        <p:commandButton value="Neue Kunde" action="#{bestellungBean.actionNewKunde}" icon="fa fa-fw fa-plus"
+                         oncomplete="PF('kundeEditDialog').show()" update=":kundeEditForm"/>
+    </ui:define>
+
+    <ui:define name="nonFormContent">
+        <ui:include src="_kunde_edit.xhtml"/>
+    </ui:define>
+</ui:composition>
+</html>

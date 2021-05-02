@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition>
+    <!-- Dialog zum Bearbeiten von Kunde -->
+    <p:dialog id="kundeEditDialog" widgetVar="kundeEditDialog" header="#{bestellungBean.header}"
+              position="center" modal="true" closable="false" closeOnEscape="false" dynamic="true"
+              maximizable="false" minimizable="false" resizable="false">
+
+        <h:form id="kundeEditForm">
+            <p:panelGrid columns="2" styleClass="fullwidth-input">
+                <p:outputLabel for="name" value="Name"/>
+                <p:inputText id="name" label="name" value="#{bestellungBean.currentKunde.name}"/>
+            </p:panelGrid>
+
+            <p:commandButton value="Speichern"
+                             action="#{bestellungBean.actionSaveKunde}"
+                             process="@form"
+                             update=":contentForm @form"
+                             oncomplete="if(operationSuccessful(args)) { PF('kundeEditDialog').show() }"
+                             icon="fa fa-fw fa-check">
+                <p:resetInput target="kundeEditForm"/>
+            </p:commandButton>
+
+            <p:commandButton value="Abbrechen"
+                             action="#{bestellungBean.actionCancelKunde}"
+                             process="@this"
+                             oncomplete="PF('kundeEditDialog').show()"
+                             icon="fa fa-fw fa-close">
+                <p:resetInput target="kundeEditForm"/>
+            </p:commandButton>
+
+        </h:form>
+    </p:dialog>
+</ui:composition>
+</html>
