@@ -1,9 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui" xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <ui:composition
         template="/resources/templates/layout/simpleTemplate.xhtml">
@@ -11,7 +10,6 @@
     <ui:define name="content">
         <p:dataTable value="#{bestellungBean.kundenList}" var="row" id="dataTable" rows="20" paginator="true"
                      paginatorPosition="bottom">
-
             <p:column id="actionColumn" styleClass="smallCol">
                 <p:commandLink id="kundeEditCmd"
                                action="#{bestellungBean.actionEditKunde(row.kunde)}"
@@ -24,7 +22,7 @@
                                update="@form"
                                title="Kunde löschen">
                     <p:confirm header="Bestätigung"
-                               message="Wollen Sie die Kunde wirklich löschen?"
+                               message="Wollen Sie das Produkt wirklich löschen?"
                                icon="pi pi-info-circle"/>
                     <span class="fa fa-fw fa-trash"/>
                 </p:commandLink>

@@ -8,29 +8,29 @@
         template="/resources/templates/layout/simpleTemplate.xhtml">
     <ui:define name="title">Bestellung Suche</ui:define>
     <ui:define name="content">
-            <p:panel header="Suche">
-                <h:panelGrid columns="6" style="width: 100%" styleClass="fullwidth-input bestellung-search">
-                    <p:outputLabel for="bezeichnung" value="Bezeichnung"/>
-                    <p:inputText id="bezeichnung" label="Bezeichnung"
-                                 value="#{bestellungSearchBean.bestellungCriteria.bezeichnung}"/>
+        <p:panel header="Suche">
+            <h:panelGrid columns="6" style="width: 100%" styleClass="fullwidth-input bestellung-search">
+                <p:outputLabel for="bezeichnung" value="Bezeichnung"/>
+                <p:inputText id="bezeichnung" label="Bezeichnung"
+                             value="#{bestellungSearchBean.bestellungCriteria.bezeichnung}"/>
 
-                    <p:outputLabel for="bestellnummer" value="Bestellnummer"/>
-                    <p:inputText id="bestellnummer" label="Bestellnummer"
-                                 value="#{bestellungSearchBean.bestellungCriteria.bestellnummer}"/>
+                <p:outputLabel for="bestellnummer" value="Bestellnummer"/>
+                <p:inputText id="bestellnummer" label="Bestellnummer"
+                             value="#{bestellungSearchBean.bestellungCriteria.bestellnummer}"/>
 
-                    <p:outputLabel for="datum" value="Datum"/>
-                    <p:inputText id="datum" label="Datum"
-                                 value="#{bestellungSearchBean.bestellungCriteria.datum}"/>
-                </h:panelGrid>
+                <p:outputLabel for="datum" value="Datum"/>
+                <p:inputText id="datum" label="Datum"
+                             value="#{bestellungSearchBean.bestellungCriteria.datum}"/>
+            </h:panelGrid>
 
-                <p:commandButton id="cmdSearch" value="Suche" action="#{bestellungSearchBean.actionSearch}"
-                                 process="@form" update="@form"
-                                 icon="fa fa-fw fa-search"/>
+            <p:commandButton id="cmdSearch" value="Suche" action="#{bestellungSearchBean.actionSearch}"
+                             process="@form" update="@form"
+                             icon="fa fa-fw fa-search"/>
 
-                <p:commandButton id="cmdCancel" value="Zurücksetzen" action="#{bestellungSearchBean.actionCancel}"
-                                 process="@this" update="@form"
-                                 icon="fa fa-fw fa-close"/>
-            </p:panel>
+            <p:commandButton id="cmdCancel" value="Zurücksetzen" action="#{bestellungSearchBean.actionCancel}"
+                             process="@this" update="@form"
+                             icon="fa fa-fw fa-close"/>
+        </p:panel>
 
         <p:dataTable value="#{bestellungSearchBean.bestellungList}" var="row" id="dataTable" rows="20" paginator="true"
                      paginatorPosition="bottom" rendered="#{bestellungSearchBean.bestellungList != null}"

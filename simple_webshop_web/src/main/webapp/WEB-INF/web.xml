@@ -4,7 +4,7 @@
 		 http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-    <description>Active Web Sample</description>
+    <description>Web Sample</description>
 
     <!-- JSF Config -->
     <context-param>
@@ -79,7 +79,7 @@
     </context-param>
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>at.activesolution.samples.web.view.config.WebConfig</param-value>
+        <param-value>at.rt.simple.webshop.web.view.config.WebConfig</param-value>
     </context-param>
 
     <welcome-file-list>

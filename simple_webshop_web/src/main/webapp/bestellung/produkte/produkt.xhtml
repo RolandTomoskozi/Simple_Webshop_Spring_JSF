@@ -1,23 +1,23 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui" xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <ui:composition>
-    <p:dataTable value="#{bestellungBean.produktList}" var="row" id="dataTableProdukt" rows="10" paginator="true"
+    <p:dataTable value="#{bestellungBean.produktList}" var="rowProdukt" id="dataTableProdukt" rows="10"
+                 paginator="true"
                  paginatorPosition="bottom">
         <p:column id="actionColumnProdukt" styleClass="smallCol">
             <p:commandLink id="produktEditCmd"
-                           action="#{bestellungBean.actionEditProdukt(row)}"
+                           action="#{bestellungBean.actionEditProdukt(rowProdukt)}"
                            oncomplete="PF('produktEditDialog').show()"
                            update=":contentForm:produktEditDialog"
                            title="Produkt bearbeiten">
                 <span class="fa fa-fw fa-edit"/>
             </p:commandLink>
             <p:commandLink id="produktDeleteCmd"
-                           action="#{bestellungBean.actionDeleteProdukt(row)}"
+                           action="#{bestellungBean.actionDeleteProdukt(rowProdukt)}"
                            update="@form"
                            title="Produkt löschen">
                 <p:confirm header="Bestätigung"
@@ -27,30 +27,26 @@
             </p:commandLink>
         </p:column>
 
-        <p:column id="bestellungColumnProdukt" headerText="Bestellung" sortBy="#{row.bestellung.bezeichnung}"
+        <p:column id="bestellungColumn" headerText="Bestellung" sortBy="#{rowProdukt.bestellung.bezeichnung}"
                   styleClass="left">
-            <h:outputText value="#{row.bestellung.bezeichnung}"
-                          title="#{row.bestellung.bezeichnung}"/>
+            <h:outputText value="#{rowProdukt.bestellung.bezeichnung}"
+                          title="#{rowProdukt.bestellung.bezeichnung}"/>
         </p:column>
-
-        <p:column id="bezeichnungColumnProdukt" headerText="Bezeichnung" sortBy="#{row.bezeichnung}"
+        <p:column id="bezeichnungColumnProdukt" headerText="Bezeichnung" sortBy="#{rowProdukt.bezeichnung}"
                   styleClass="left">
-            <h:outputText value="#{row.bezeichnung}"/>
+            <h:outputText value="#{rowProdukt.bezeichnung}"/>
         </p:column>
-
-        <p:column id="preisColumnProdukt" headerText="Preis" sortBy="#{row.preis}"
+        <p:column id="preisColumnProdukt" headerText="Preis" sortBy="#{rowProdukt.preis}"
                   styleClass="right">
-            <h:outputText value="#{row.preis} Euro"/>
+            <h:outputText value="#{rowProdukt.preis} Euro"/>
         </p:column>
-
-        <p:column id="positionColumnProdukt" headerText="Position" sortBy="#{row.position}"
-                  styleClass="left">
-            <h:outputText value="#{row.position}"/>
+        <p:column id="positionColumnProdukt" headerText="Position" sortBy="#{rowProdukt.position}"
+                  styleClass="center">
+            <h:outputText value="#{rowProdukt.position}"/>
         </p:column>
-
-        <p:column id="artikelnummerColumnProdukt" headerText="Artikelnummer" sortBy="#{row.artikelnummer}"
+        <p:column id="artikelNummerColumnProdukt" headerText="Artikelnummer" sortBy="#{rowProdukt.artikelnummer}"
                   styleClass="left">
-            <h:outputText value="#{row.artikelnummer}"/>
+            <h:outputText value="#{rowProdukt.artikelnummer}"/>
         </p:column>
     </p:dataTable>
 
@@ -58,7 +54,7 @@
     <p:commandButton value="Neues Produkt" action="#{bestellungBean.actionNewProdukt}" icon="fa fa-fw fa-plus"
                      oncomplete="PF('produktEditDialog').show()" update=":contentForm:produktEditDialog"/>
 
-    <!-- Import Pordukt Edit -->
+    <!-- Import Produkt Edit -->
     <ui:include src="../../bestellung/produkte/_produkt_edit.xhtml"/>
 
 </ui:composition>

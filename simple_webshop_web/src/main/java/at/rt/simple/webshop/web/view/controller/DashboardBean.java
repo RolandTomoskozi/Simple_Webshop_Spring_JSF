@@ -43,11 +43,13 @@ public class DashboardBean {
             // DashboardModel initialisieren
             model = new DefaultDashboardModel();
             DashboardColumn column1 = new DefaultDashboardColumn();
+            DashboardColumn column2 = new DefaultDashboardColumn();
 
             column1.addWidget("links");
-            column1.addWidget("kunden");
+            column2.addWidget("kunden");
 
             model.addColumn(column1);
+            model.addColumn(column2);
         }
 
         return model;
