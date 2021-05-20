@@ -3,7 +3,6 @@ package at.rt.simple.webshop.core.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -23,9 +22,6 @@ import java.util.Properties;
  * Created on 18.04.2021
  */
 @Configuration
-@EnableJpaRepositories(basePackages = {
-        "at.rt.simple.webshop.core.repo"
-})
 @EnableTransactionManagement
 public class PersistenceConfig {
     @Bean
@@ -105,8 +101,10 @@ public class PersistenceConfig {
     public DataSource dataSource() {
         EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
         builder.setType(EmbeddedDatabaseType.H2);
+        builder.setName("testdb");
         builder.setScriptEncoding("UTF-8");
         builder.addScript("classpath:/db/h2-schema.sql");
+        builder.addScript("classpath:/db/test-data-kunde.sql");
         builder.addScript("classpath:/db/test-data-bestellung.sql");
         builder.addScript("classpath:/db/test-data-produkt.sql");
 

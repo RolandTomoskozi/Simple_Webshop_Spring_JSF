@@ -21,7 +21,7 @@
                 <p:outputLabel for="kunde" value="Kunde"/>
                 <p:selectOneMenu id="kunde" label="Kunde"
                                  value="#{bestellungBean.currentBestellung.kunde}"
-                                 converter="#{kundeConverter}">
+                                 converter="#{kundenConverter}">
                     <f:selectItems value="#{lookupValuesBean.kunde}"/>
                 </p:selectOneMenu>
 

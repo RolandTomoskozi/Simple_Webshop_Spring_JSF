@@ -4,8 +4,8 @@ create table kunde
 (
     id IDENTITY NOT NULL CONSTRAINT kunde_pk PRIMARY KEY,
     name varchar(200) not null,
-    kundennummer varchar(36) not null
-)
+    kundennummer varchar (36) not null
+);
 
 create table bestellung
 (
@@ -19,8 +19,8 @@ create table bestellung
 create table produkt
 (
     id IDENTITY NOT NULL CONSTRAINT produkt_pk PRIMARY KEY,
-    bestellnummer varchar (100) not null,
-    artikelnummer varchar(36) not null,
+    bestellnummer varchar (36) not null,
+    artikelnummer varchar (36) not null,
     bestellung_id integer,
     position integer,
     bezeichnung varchar (200),
@@ -33,5 +33,4 @@ alter table produkt
 alter table bestellung
     add constraint bestellung_kunde_id foreign key(kunde_id) references kunde(id);
 
-alter table bestellung
-    add constraint un_bestellnummer UNIQUE (bestellnummer)
+ALTER TABLE bestellung ADD CONSTRAINT un_bestellnummer UNIQUE(bestellnummer)

@@ -19,7 +19,6 @@ import java.util.Date;
 @Table(name = "bestellung")
 @Data
 public class Bestellung extends BaseEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -32,6 +31,7 @@ public class Bestellung extends BaseEntity {
     private String bestellnummer;
 
     @Temporal(TemporalType.DATE)
+    @Column(name = "datum")
     private Date datum;
 
     @NotBlank(message = "Bezeichnung darf nicht leer sein")

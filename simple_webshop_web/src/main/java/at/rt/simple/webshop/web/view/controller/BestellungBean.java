@@ -50,7 +50,7 @@ public class BestellungBean extends BaseBackingBean {
         refreshKunde();
     }
 
-    // GET
+    // Get
     public List<KundeDto> getKundenList() {
         kundenList = kundeService.listKundeDto();
 
@@ -65,7 +65,6 @@ public class BestellungBean extends BaseBackingBean {
         if (bestellungList == null) {
             return Collections.emptyList();
         }
-
         return bestellungList;
     }
 
@@ -73,7 +72,6 @@ public class BestellungBean extends BaseBackingBean {
         if (produktList == null) {
             return Collections.emptyList();
         }
-
         return produktList;
     }
 
@@ -81,25 +79,31 @@ public class BestellungBean extends BaseBackingBean {
 
     /**
      * Setzt eine Kunden zur Bearbeitung.
+     *
+     * @param kunde der zu bearbeitende Mitarbeiter
      */
     public void actionEditKunde(Kunde kunde) {
-        header = "Kunde bearbeiten";
+        setHeader("Kunde bearbeiten");
         this.currentKunde = kunde;
     }
 
     /**
-     * Erstellt ein neue Bestellung Objekt zur Anlage.
+     * Setzt eine Bestellung zur Bearbeitung.
+     *
+     * @param bestellung der zu bearbeitende Bestellung
      */
     public void actionEditBestellung(Bestellung bestellung) {
-        header = "Neues Bestellung";
+        setHeader("Bestellung bearbeiten");
         this.currentBestellung = bestellung;
     }
 
     /**
-     * Setzt eine Produkt zu Bearbeitung.
+     * Setzt eine Produkt zur Bearbeitung.
+     *
+     * @param produkt der zu bearbeitende Produkt
      */
     public void actionEditProdukt(Produkt produkt) {
-        header = "Produkt bearbeiten";
+        setHeader("Produkt bearbeiten");
         this.currentProdukt = produkt;
     }
 
@@ -130,7 +134,7 @@ public class BestellungBean extends BaseBackingBean {
     }
 
     /**
-     * Setzt eine Bestellung zur Bearbeitung.
+     * Erstellt ein neue Bestellung Objekt zur Anlage.
      */
     public void actionNewBestellung() {
         setHeader("Neues Bestellung");
@@ -139,12 +143,12 @@ public class BestellungBean extends BaseBackingBean {
         // erstellt ein random UUID
         String uuid = UUID.randomUUID().toString();
 
-        // sammelt die Bestelnummern von Bestellungen und speichert sie in einem List
+        // sammelt die Bestellnummern von Bestellungen und speichert sie in einem List
         List<String> uuidList = bestellungList
                 .stream()
                 .map(bestellungDto -> bestellungDto.getBestellung().getBestellnummer()).collect(Collectors.toList());
 
-        // loopt durch die Liste von Kundennummern und überprüft, ob sie noch nicht vorhanden ist
+        // loopt durch die Liste von Bestellnummern und überprüft, ob sie noch nicht vorhanden ist
         while (uuidList.contains(uuid)) {
             // generiert solange eine neue UUID, bis sie uniq wird
             uuid = UUID.randomUUID().toString();
@@ -154,21 +158,19 @@ public class BestellungBean extends BaseBackingBean {
     }
 
     /**
-     * Erstellt ein neue Produkt Objekt zu Anlage.
+     * Erstellt ein neue Produkt Objekt zur Anlage.
      */
     public void actionNewProdukt() {
-        setHeader("Neus Produkt");
+        setHeader("Neues Produkt");
         currentProdukt = new Produkt();
 
         // erstellt ein random UUID
         String uuid = UUID.randomUUID().toString();
 
         // sammelt die Artikelnummern von Produkten und speichert sie in einem List
-        List<String> uuidList = produktList
-                .stream()
-                .map(Produkt::getArtikelnummer).collect(Collectors.toList());
+        List<String> uuidList = produktList.stream().map(Produkt::getArtikelnummer).collect(Collectors.toList());
 
-        // loopt durch die Liste von Kundennummern und überprüft, ob sie noch nicht vorhanden ist
+        // loopt durch die Liste von Artikelnummern und überprüft, ob sie noch nicht vorhanden ist
         while (uuidList.contains(uuid)) {
             // generiert solange eine neue UUID, bis sie uniq wird
             uuid = UUID.randomUUID().toString();
@@ -180,7 +182,7 @@ public class BestellungBean extends BaseBackingBean {
     // Delete
 
     /**
-     * Loescht den uebergebene Kunde aus der DB.
+     * Loescht den uebergebene Kunde aus der DB
      *
      * @param kunde zu loeschender Kunde
      */
@@ -189,17 +191,21 @@ public class BestellungBean extends BaseBackingBean {
             kundeService.deleteKunde(kunde);
             refreshKunde();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Kunde wurde gelöscht!"));
+
         } catch (Exception e) {
             handleException(e);
         }
     }
 
     /**
-     * Loescht den uebergebene Bestellung aus der DB.
+     * Loescht den uebergebene Bestellung aus der DB
+     *
+     * @param bestellung zu loeschender Bestellung
      */
     public void actionDeleteBestellung(Bestellung bestellung) {
         try {
             bestellungService.deleteBestellung(bestellung);
+
             refreshBestellung();
             refreshKunde();
 
@@ -212,13 +218,15 @@ public class BestellungBean extends BaseBackingBean {
     }
 
     /**
-     * Loescht den uebergebene Produkt aus der DB.
+     * Loescht den uebergebene Produkt aus der DB
+     *
+     * @param produkt zu loeschender Produkt
      */
     public void actionDeleteProdukt(Produkt produkt) {
         try {
             produktService.deleteProdukt(produkt);
 
-            // refresht die Kunden und damit gliechzeitig die Bestellungen
+            // refresht die Kunden und damit gleichzeitig die Bestellungen
             refreshKunde();
 
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Produkt wurde gelöscht!"));
@@ -236,10 +244,11 @@ public class BestellungBean extends BaseBackingBean {
         try {
             kundeService.saveKunde(currentKunde);
 
-            // reload Kunden
+            // reload kunden
             refreshKunde(currentKunde);
 
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Daten wurden gespeichert!"));
+            FacesContext.getCurrentInstance()
+                    .addMessage(null, new FacesMessage("Daten wurden gespeichert!"));
         } catch (Exception e) {
             handleException(e);
         }
@@ -256,7 +265,7 @@ public class BestellungBean extends BaseBackingBean {
             refreshKunde();
 
             FacesContext.getCurrentInstance()
-                    .addMessage(null, new FacesMessage("Daten wurden gespeschert!"));
+                    .addMessage(null, new FacesMessage("Daten wurden gespeichert!"));
 
         } catch (Exception e) {
             handleException(e);
@@ -276,6 +285,7 @@ public class BestellungBean extends BaseBackingBean {
             // speichert das Produkt
             produktService.saveProdukt(currentProdukt);
 
+            // Zur Produktliste hinzufügen
             if (!produktList.contains(currentProdukt)) {
                 produktList.add(currentProdukt);
             }
@@ -284,8 +294,7 @@ public class BestellungBean extends BaseBackingBean {
             refreshKunde();
 
             FacesContext.getCurrentInstance()
-                    .addMessage(null, new FacesMessage("Daten wurden gespeischert!"));
-
+                    .addMessage(null, new FacesMessage("Daten wurden gespeichert!"));
         } catch (Exception e) {
             handleException(e);
         }
@@ -307,7 +316,7 @@ public class BestellungBean extends BaseBackingBean {
     // Reset
 
     /**
-     * Kundenliste und aktuelle Kunde zuruecksetzen.
+     * Kundenliste und aktuelle Kunde zuruecksetzen
      */
     private void resetKunde() {
         currentKunde = null;
@@ -316,7 +325,7 @@ public class BestellungBean extends BaseBackingBean {
     }
 
     /**
-     * Bestellungliste und aktuelle Bestellung zuruecksetzen.
+     * Bestellungsliste, aktuelle Bestellung zuruecksetzen und Produktlist auf leer stellen
      */
     private void resetBestellung() {
         currentBestellung = null;
@@ -327,10 +336,9 @@ public class BestellungBean extends BaseBackingBean {
     // Refresh
     private void refreshKunde(Kunde kunde) {
         kundenList = kundeService.listKundeDto();
-
-        // Wenn die Kundenlist nicht leer ist, holt mir (durch den BestellungBean) die esrte Elemente
+        // Wenn die Kundenlist nicht leer ist, holt mir (durch den BestellungBean) die Elemente
         if (!kundenList.isEmpty()) {
-            onBestellungListWithKundeId(kunde.getId());
+            onBestellungListeWithKundeId(kunde.getId());
         } else {
             resetKunde();
         }
@@ -338,17 +346,17 @@ public class BestellungBean extends BaseBackingBean {
 
     private void refreshKunde() {
         kundenList = kundeService.listKundeDto();
-
+        // Wenn die Kundenlist nicht leer ist, holt mir (durch den BestellungBean) die Elemente
         if (!kundenList.isEmpty()) {
-            onBestellungListWithKundeId(kundenList.get(0).getKunde().getId());
+            onBestellungListeWithKundeId(kundenList.get(0).getKunde().getId());
         } else {
             resetKunde();
         }
     }
 
-    private void refreshBestellung() {
+    protected void refreshBestellung() {
         if (!bestellungList.isEmpty()) {
-            onProduktListWithBestellId(bestellungList.get(0).getBestellung().getBestellnummer());
+            onProduktListeWithBestellId(bestellungList.get(0).getBestellung().getBestellnummer());
         } else {
             resetBestellung();
         }
@@ -356,11 +364,12 @@ public class BestellungBean extends BaseBackingBean {
 
     // ---------------------------------------------------- Mapper -----------------------------------------------------
 
-    public void onBestellungListWithKundeId(Long id) {
-        bestellungList = bestellungService.listBestellungDto(id);
+    // Bestellung
+    public void onBestellungListeWithKundeId(Long id) {
+        bestellungList = bestellungService.listBestellungenDto(id);
 
         if (!bestellungList.isEmpty()) {
-            onProduktListWithBestellId(bestellungList);
+            onProduktListeWithBestellId(bestellungList);
         } else {
             setProduktList(Collections.emptyList());
         }
@@ -372,12 +381,14 @@ public class BestellungBean extends BaseBackingBean {
                 .collect(Collectors.toList());
     }
 
-    public void onProduktListWithBestellId(String bestellnummer) {
-        produktList = produktService.listProdukt(bestellnummer);
+    // Produkt
+    public void onProduktListeWithBestellId(String bestellnummer) {
+        produktList = produktService.listProdukte(bestellnummer);
     }
 
-    public void onProduktListWithBestellId(List<BestellungDto> bestellungNummerList) {
-        produktList = produktService.listProdukt(bestellungNummerList);
+    // ProduktDto
+    public void onProduktListeWithBestellId(List<BestellungDto> bestellungNummerList) {
+        produktList = produktService.listProdukte(bestellungNummerList);
     }
 
     // ------------------------------------------------ Getter & Setter ------------------------------------------------
@@ -392,16 +403,19 @@ public class BestellungBean extends BaseBackingBean {
     }
 
     // Kunde
-    public void setCurrentKunde(Kunde currentKunde) {
-        this.currentKunde = currentKunde;
-    }
-
     public Kunde getCurrentKunde() {
         return currentKunde;
     }
 
-    // Bestellung
+    public void setCurrentKunde(Kunde currentKunde) {
+        this.currentKunde = currentKunde;
+    }
 
+    public void setKundenList(List<KundeDto> kundenList) {
+        this.kundenList = kundenList;
+    }
+
+    //  Bestellung
     public Bestellung getCurrentBestellung() {
         return currentBestellung;
     }
@@ -415,7 +429,6 @@ public class BestellungBean extends BaseBackingBean {
     }
 
     // Produkt
-
     public Produkt getCurrentProdukt() {
         return currentProdukt;
     }

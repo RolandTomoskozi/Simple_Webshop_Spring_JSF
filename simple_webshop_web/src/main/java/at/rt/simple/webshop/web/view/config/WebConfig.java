@@ -16,7 +16,7 @@ import java.util.Map;
  * Beinhaltet:
  * <ul>
  * <li>Component-Scan fuer die Controller und Converter-Packages</li>
- * <li>Importiert die Perstistence Konfiguration {@link at.rt.simple.webshop.core.config.CoreConfig}</li>
+ * <li>Importiert die Perstistence Konfiguration {@link CoreConfig}</li>
  * </ul>
  */
 @Configuration

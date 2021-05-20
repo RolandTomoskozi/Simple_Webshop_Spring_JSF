@@ -14,5 +14,5 @@ import lombok.Data;
 @AllArgsConstructor
 public class BestellungDto {
     private Bestellung bestellung;
-    private Integer anzahlProdukt;
+    private Long anzahlVonProdukten;
 }

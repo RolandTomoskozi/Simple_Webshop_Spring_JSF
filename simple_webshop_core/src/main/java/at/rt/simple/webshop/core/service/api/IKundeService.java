@@ -37,7 +37,7 @@ public interface IKundeService {
      * Speichert eine Kunde.
      *
      * @param kunde Zu speichernder Kunde
-     * @return gepsciherte Kunde
+     * @return gespeicherte Kunde
      */
     Kunde saveKunde(Kunde kunde);
 

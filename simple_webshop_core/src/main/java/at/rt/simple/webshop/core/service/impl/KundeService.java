@@ -7,11 +7,11 @@ import at.rt.simple.webshop.core.service.api.IBestellungService;
 import at.rt.simple.webshop.core.service.api.IKundeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -38,9 +38,9 @@ public class KundeService implements IKundeService {
     @Override
     public List<KundeDto> listKundeDto() {
         String select = "select new at.rt.simple.webshop.core.model.dto.KundeDto(k, count(b)) " +
-                " from Kunde k left join Bestellung b on b.kunde=k group by k";
-
+                "from Kunde k left join Bestellung b on b.kunde=k group by k";
         return entityManager.createQuery(select, KundeDto.class).getResultList();
+
     }
 
     @Override
@@ -63,6 +63,7 @@ public class KundeService implements IKundeService {
     @Override
     @Transactional
     public void deleteKunde(Kunde kunde) {
+
         Kunde kundeToDelete = kunde;
 
         if (!entityManager.contains(kundeToDelete)) {

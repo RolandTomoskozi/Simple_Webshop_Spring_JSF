@@ -1,5 +1,6 @@
 package at.rt.simple.webshop.core.service.api;
 
+import at.rt.simple.webshop.core.model.criteria.BestellungCriteria;
 import at.rt.simple.webshop.core.model.domain.Bestellung;
 import at.rt.simple.webshop.core.model.dto.BestellungDto;
 
@@ -14,7 +15,7 @@ import java.util.List;
 public interface IBestellungService {
 
     /**
-     * Liefert die List alle Bestellungen.
+     * Liefert die Liste alle Bestellungen.
      *
      * @return Liste alle Bestellungen
      */
@@ -24,12 +25,12 @@ public interface IBestellungService {
      * Liefert die Liste alle Bestellungen mit anzahl der Produkten.
      *
      * @param id Kunde id
-     * @return Lust alle Bestellungen
+     * @return Liste alle Bestellungen
      */
-    List<BestellungDto> listBestellungDto(Long id);
+    List<BestellungDto> listBestellungenDto(Long id);
 
     /**
-     * Sucht eine Abteilung anhand der ID
+     * Sucht eine Bestellung anhand der ID
      *
      * @param id ID der Bestellung
      * @return gefundene Bestellung
@@ -37,15 +38,23 @@ public interface IBestellungService {
     Bestellung getBestellungById(Long id);
 
     /**
+     * Liefert die Liste der Betellung laut den uebergebenen Suchkriterien.
+     *
+     * @param bestellungCriteria Suchkriterien fuer Bestellungsuche
+     * @return Liste von Bestellungen
+     */
+    List<Bestellung> searchBestellung(BestellungCriteria bestellungCriteria);
+
+    /**
      * Speichert eine Bestellung.
      *
-     * @param bestellung Zu speichernde Bestellung
+     * @param bestellung Zu speichernder Bestellung
      * @return gespeicherte Bestellung
      */
     Bestellung saveBestellung(Bestellung bestellung);
 
     /**
-     * Loescht eine Bestellung
+     * Loescht eine Bestellung.
      *
      * @param bestellung zu loeschender Bestellung
      */

@@ -1,6 +1,5 @@
 package at.rt.simple.webshop.core.service.api;
 
-import at.rt.simple.webshop.core.model.domain.Bestellung;
 import at.rt.simple.webshop.core.model.domain.Produkt;
 import at.rt.simple.webshop.core.model.dto.BestellungDto;
 
@@ -22,29 +21,29 @@ public interface IProduktService {
     List<Produkt> listAlleProdukte();
 
     /**
-     * Liefert die Liste aller Produkten.
+     * Liefert die Produkte der ausgewaehlte Bestellug.
      *
-     * @return Liste von Produkten
+     * @return Liste alle Produkte
      */
-    List<Produkt> listProdukt(String bestellnummer);
+    List<Produkt> listProdukte(String bestellnummer);
 
     /**
-     * Liefert die Liste aller Produkten.
+     * Liefert die Produkte der ausgewaehlte Bestellug.
      *
-     * @return Liste von Produkten
+     * @return Liste alle Produkte
      */
-    List<Produkt> listProdukt(List<BestellungDto> bestellnummerList);
+    List<Produkt> listProdukte(List<BestellungDto> bestellnummerList);
 
     /**
      * Speichert ein Produkt.
      *
-     * @param produkt Zu speichernden Produkt
-     * @return gespeicherte Produkt
+     * @param produkt Zu speicherndem Produkt
+     * @return gespeichertes Produkt
      */
     Produkt saveProdukt(Produkt produkt);
 
     /**
-     * Loescht ein Produkt
+     * Loescht ein Produkt.
      *
      * @param produkt zu loeschender Produkt
      */
