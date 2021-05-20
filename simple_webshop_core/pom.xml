@@ -7,7 +7,7 @@
     <artifactId>simple_webshop_core</artifactId>
 
     <parent>
-        <groupId>at.rt.simple.webshop.simple_webshop</groupId>
+        <groupId>webshop.simple_webshop</groupId>
         <artifactId>simple_webshop_parent</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
@@ -25,12 +25,13 @@
             <artifactId>spring-context</artifactId>
         </dependency>
         <dependency>
-            <groupId>javax.inject</groupId>
-            <artifactId>javax.inject</artifactId>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-orm</artifactId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>5.3.5</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -58,9 +59,19 @@
             <artifactId>hibernate-validator</artifactId>
         </dependency>
 
+        <!-- JavaX -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <scope>compile</scope>
+        </dependency>
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
         </dependency>
 
         <!-- H2 DB -->
@@ -69,13 +80,6 @@
             <artifactId>h2</artifactId>
         </dependency>
 
-<!--        &lt;!&ndash; Joda Time &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>joda-time</groupId>-->
-<!--            <artifactId>joda-time</artifactId>-->
-<!--            <version>2.10.10</version>-->
-<!--        </dependency>-->
-
         <!-- Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -83,28 +87,12 @@
             <version>1.18.20</version>
             <scope>provided</scope>
         </dependency>
+
+        <!-- Jackson -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
             <version>2.11.4</version>
         </dependency>
-
-<!--        <dependency>-->
-<!--            <groupId>org.springframework</groupId>-->
-<!--            <artifactId>spring-webmvc</artifactId>-->
-<!--            <version>3.1.1.RELEASE</version>-->
-<!--        </dependency>-->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>5.3.5</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <scope>compile</scope>
-        </dependency>
-
     </dependencies>
-
 </project>
